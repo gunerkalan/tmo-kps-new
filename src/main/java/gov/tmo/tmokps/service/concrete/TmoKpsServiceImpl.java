@@ -41,7 +41,6 @@ public class TmoKpsServiceImpl implements TmoKpsService {
 
     }
 
-
     private Result save(Person person) {
         tmoKpsRepository.save(person);
         return new Result(true,Messages.personSaved);
@@ -91,6 +90,7 @@ public class TmoKpsServiceImpl implements TmoKpsService {
     }
 
     @Override
+    @Transactional
     public DataResult<PersonDTO> getByTcNoKps(String TcNo) {
         DataResult<Person> personResult = getByTcNo(TcNo);
         Date todayZone = new Date();
@@ -103,8 +103,10 @@ public class TmoKpsServiceImpl implements TmoKpsService {
                 //Kps servisinden Tc No ile kişiyi çeken ve persona aktaran metodu çağır
                 //Düzenle metodunu çağır
                 //return et
+                return null;
             }
             else{
+                //6 ay dolmamoış ve veritabanında var
                return new SuccessDataResult<>(personMapper.entityToDto(personResult.getData()),Messages.personGatedByTcNo);
             }
         }
@@ -129,6 +131,5 @@ public class TmoKpsServiceImpl implements TmoKpsService {
         long diff = date2.getTime() - date1.getTime();
         daysdiff = (int) diff;
         return daysdiff;
-
     }
 }

@@ -17,6 +17,4 @@ public interface TmoKpsRepository extends JpaRepository<Person,Long> {
     @Query("select p from Person p where upper(p.name) like upper(?1) and upper(p.surname) like upper(?2)")
     List<Person> findByNameAndSurnameLike(String name, String surname);
 
-
-
 }
