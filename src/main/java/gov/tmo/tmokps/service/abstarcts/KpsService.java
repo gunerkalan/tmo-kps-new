@@ -5,7 +5,7 @@ import gov.tmo.tmokps.entities.concrete.Person;
 
 public interface KpsService {
 
-    DataResult<Person> getByTcNo(String TcNo);
+    DataResult<Person> getByTcNo(Long TcNo);
 
    //Kimlik Numarası İle Bileşik Kütük Sorgulama Servisi
 
